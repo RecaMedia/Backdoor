@@ -12,7 +12,7 @@ To begin installation, goto the URL that points to the Backdoor directory follow
 
 ### License
 
-Backdoor is FREE to use, distribute, or host. Backdoor can NOT be used to generate any type of profit. See [LICENSE](https://github.com/RecaMedia/Backdoor/blob/master/LICENSE) provided in this repository. Please contact the author for more information regarding licensing.
+Backdoor is FREE to use, distribute, or host. Backdoor can NOT be used to generate any type of profit. See [LICENSE](https://github.com/RecaMedia/Backdoor/blob/master/LICENSE.md) provided in this repository. Please contact the author for more information regarding licensing.
 
 ### Copyright
 
