@@ -21,7 +21,7 @@ import Support from './templates/support';
 const Routing = (
 	<Provider store={store}>
 		<Router history={history}>
-			<Route path="/" component={App}>
+			<Route path="/Backdoor/" component={App}>
 				<IndexRoute component={Home}></IndexRoute>
 				<Route path="/about" component={About}></Route>
 				<Route path="/support" component={Support}></Route>
