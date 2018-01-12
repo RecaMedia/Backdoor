@@ -1,5 +1,6 @@
 import React from 'react';
 import store from '../store';
+import {Link} from 'react-router';
 
 class Nav extends React.Component {
 
@@ -55,7 +56,7 @@ class Nav extends React.Component {
               <li><a data-anchor="about" href="#about">About BKDR</a></li>
               <li><a data-anchor="features" href="#features">Features</a></li>
               <li><a data-anchor="developers" href="#developers">Developers</a></li>
-              <li><a href="/support">Support</a></li>
+              <li><Link to="/Backdoor/support">Support</Link></li>
               <li className="menu-download"><a href="https://github.com/RecaMedia/Backdoor-Release" target="_blank">Download v2.0.3</a></li>
             </ul>
           </div>

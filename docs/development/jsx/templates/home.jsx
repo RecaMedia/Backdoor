@@ -24,9 +24,11 @@ class Home extends React.Component {
 				$body.toggleClass('menu--open');
 			});
 			$('.nav a').not('.menu-download a').click(function(e) {
-				e.preventDefault();
-				var id = $(this).attr('data-anchor');
-				$html.animate({ scrollTop: $('[name="' + id + '"]').offset().top}, 'slow');
+				if ($(this).hasAttr("data-anchor")) {
+					e.preventDefault();
+					var id = $(this).attr('data-anchor');
+					$html.animate({ scrollTop: $('[name="' + id + '"]').offset().top}, 'slow');
+				}
 			}); 
 		});
 	}
