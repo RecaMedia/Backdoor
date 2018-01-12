@@ -23,8 +23,8 @@ const Routing = (
 		<Router history={history}>
 			<Route path="/Backdoor/" component={App}>
 				<IndexRoute component={Home}></IndexRoute>
-				<Route path="/about" component={About}></Route>
-				<Route path="/support" component={Support}></Route>
+				<Route path="/Backdoor/about" component={About}></Route>
+				<Route path="/Backdoor/support" component={Support}></Route>
 			</Route>
 		</Router>
 	</Provider>
