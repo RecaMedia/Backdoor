@@ -35,8 +35,7 @@ class Header extends React.Component {
 
   checkRoute() {
     let currentRoute = this.app_state.global.routePath
-    if (currentRoute == "/") {
-      console.log(currentRoute+" == /");
+    if (currentRoute == "/Backdoor/") {
       this.setState({
         content: true,
         className: "header"

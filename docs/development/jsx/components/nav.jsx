@@ -53,9 +53,9 @@ class Nav extends React.Component {
           <div className="menu-wrapper">
             <a id="menubutton" role="button" aria-haspopup="true" aria-controls="menu" className="menu-button"></a>
             <ul id="menu" role="menu" tabIndex="-1" aria-labelledby="menubutton" className="menu">
-              <li><a data-anchor="about" href="#about">About BKDR</a></li>
-              <li><a data-anchor="features" href="#features">Features</a></li>
-              <li><a data-anchor="developers" href="#developers">Developers</a></li>
+              <li><a data-anchor="about" href="/Backdoor/#about">About BKDR</a></li>
+              <li><a data-anchor="features" href="/Backdoor/#features">Features</a></li>
+              <li><a data-anchor="developers" href="/Backdoor/#developers">Developers</a></li>
               <li><Link to="/Backdoor/support">Support</Link></li>
               <li className="menu-download"><a href="https://github.com/RecaMedia/Backdoor-Release" target="_blank">Download v2.0.3</a></li>
             </ul>
