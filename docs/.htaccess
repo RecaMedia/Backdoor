@@ -2,7 +2,7 @@ Options -Indexes
 
 RewriteEngine On
 
-RewriteBase /
+# RewriteBase /Backdoor/
 
 # RewriteCond %{HTTPS} !=on
 # RewriteRule ^/?(.*) https://%{SERVER_NAME} [R,L]
