@@ -1,0 +1,49 @@
+@font-face {
+	font-family: "icons";
+	src: url('../fonts/icons.eot');
+	src: url('../fonts/icons.eot?#iefix') format('eot'),
+		url('../fonts/icons.woff') format('woff'),
+		url('../fonts/icons.ttf') format('truetype'),
+		url('../fonts/icons.svg#icons') format('svg');
+}
+
+.icon:before {
+	font-family: "icons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.icon-facebook:before {
+	content: "\E001";
+}
+
+.icon-github:before {
+	content: "\E002";
+}
+
+.icon-instagram:before {
+	content: "\E003";
+}
+
+.icon-linkedin:before {
+	content: "\E004";
+}
+
+.icon-pinterest:before {
+	content: "\E005";
+}
+
+.icon-twitter:before {
+	content: "\E006";
+}
+
+.icon-youtube:before {
+	content: "\E007";
+}

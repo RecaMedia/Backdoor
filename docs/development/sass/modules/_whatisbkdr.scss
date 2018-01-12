@@ -1,0 +1,28 @@
+.what-is-backdoor {
+  padding: 20px 0;
+  text-align: center;
+
+  span {
+    font-size: 14px;
+  }
+
+  .details {
+    line-height: 1.2em;
+    margin: 0 auto 20px;
+    max-width: 50%;
+    min-width: 320px;
+    text-align: left;
+  }
+}
+
+.languages {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+}
+
+@include not-mobile() {
+  .what-is-backdoor {
+    padding: 40px 0 100px;
+  }
+}

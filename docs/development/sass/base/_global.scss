@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Open+Sans:400,600,700,800');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+hr {
+	border: none;
+	border-top: 1px dashed #cccccc;
+	margin: 40px 0;
+}
+
+p {
+	color: #777;
+	font-size: 20px;
+	line-height: 1.8em;
+}
+
+.logo {
+	flex: 0 0 auto;
+	max-height: 40px;
+	max-width: 130px;
+	width: 100%;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 0 15px;
+	position: relative;
+	width: 100%;
+}
+
+.subtitle {
+	font-family: 'Archivo Black', sans-serif;
+	font-size: 24px;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+@include tablet() {
+	.subtitle {
+		font-size: 36px;
+	}
+}
+
+@include desktop() {
+	.subtitle {
+		font-size: 42px;
+	}
+}

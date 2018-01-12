@@ -1,0 +1,35 @@
+// START : /GLOBAL/HEADER
+
+header.header(name="welcome")
+  nav.nav
+    .container
+      a(data-anchor="welcome" href="#welcome")
+        img(src="/assets/img/bkdr_logo_pro_black.svg" alt="Backdoor Code Editor").logo
+      .menu-wrapper
+        a.menu-button(id="menubutton" role="button" aria-haspopup="true" aria-controls="menu")
+        ul.menu(id="menu" role="menu" tabindex="-1" aria-labelledby="menubutton")
+          li
+            a(data-anchor="about" href="#about") About BKDR
+          li
+            a(data-anchor="features" href="#features") Features
+          li
+            a(data-anchor="developers" href="#developers") Developers
+          li
+            a(href="/support") Support
+          li.menu-download
+            a(href="https://github.com/RecaMedia/Backdoor-Release" target="_blank") Download v2.0.0
+  .container
+    .header-wrapper
+      h1.header-title The Best FREE In Browser Code Editor
+      //-.band
+        .container
+          .band-container
+            .band-version
+              span Latest:
+              | v2.0.0
+          .band-container
+            a.band-download(href="#") Coming Soon
+          .band-container
+            a.band-docs(href="#") How to Install
+
+// END : /GLOBAL/HEADER

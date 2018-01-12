@@ -1,0 +1,142 @@
+.nav {
+  background-color: rgba(#000,0.75);
+  height: 60px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: z('menu');
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.menu-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  height: 60px;
+}
+
+.menu {
+  background-color: #000;
+  display: none;
+  list-style: none;
+  margin: 0;
+  min-width: 50%;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 60px;
+
+  .menu--open & {
+    display: block;
+  }
+
+  li {
+    display: block;
+  }
+
+  a {
+    color: #fff;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 15px;
+    text-align: left;
+    text-decoration: none;
+    transition: color 250ms;
+
+    &:hover {
+      color: #ff004a;
+    }
+  }
+}
+
+.menu-button {
+  display: block;
+  height: 60px;
+  position: relative;
+  width: 60px;
+
+  &:before, &:after {
+    background-color: #fff;
+    content: '';
+    height: 2px;
+    left: 10px;
+    position: absolute;
+    transform: translateY(0) rotate(0);
+    transition: transform 250ms, top 250ms;
+    width: 40px;
+  }
+
+  &:before {
+    top: 20px;
+  }
+
+  &:after {
+    top: 40px;
+  }
+
+  .menu--open & {
+    &:before, &:after {
+      top: 50%;
+    }
+    &:before {
+      transform: translateY(-50%) rotate(-45deg);
+    }
+    &:after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+}
+
+.menu-download {
+
+  a {
+    background: #ff004a;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: bold;
+    height: 46px;
+    line-height: 46px;
+    margin: 7px;
+    transition: background-color 300ms;
+    
+    &:hover {
+      background-color: #dd0042;
+      color: #ffffff;
+    }
+  }
+}
+
+@include not-mobile() {
+  .menu {
+    background-color: transparent;
+    display: block;
+    position: relative;
+    top: 0;
+    width: auto;
+
+    li {
+      display: inline-block;
+    }
+
+    a {
+      text-align: center;
+    }
+  }
+  .menu-button {
+    display: none;
+  }
+}
+
+@include beyond-tablet() {
+  .menu a {
+    font-size: 13px;
+  }
+}

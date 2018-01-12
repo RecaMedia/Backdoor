@@ -1,0 +1,98 @@
+.feature {
+  background-color: #fafafa;
+  
+  & + & {
+    margin-top: 5px;
+  }
+
+  &:nth-child(odd) {
+
+    .feature-title, .feature-desc {
+      //background-color: #ca033f;
+    }
+  }
+
+  &:nth-child(even) {
+    background-color: #F5F5F5;
+
+    .feature-title, .feature-desc {
+      //background-color: #ff004a;
+    }
+  }
+
+  .container {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    padding: 0;
+  }
+
+  .subtitle {
+    //color: #ff004a;
+    font-size: 40px;
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+  }
+}
+
+.feature-title, .feature-desc {
+  align-items: center;
+  display: flex;
+  padding: 15px;
+}
+
+.feature-title {
+  color: #000000;
+  flex-direction: column;
+  flex: 0 0 33.33%;
+  font-size: 24px;
+  justify-content: center;
+  order: 1;
+  padding: 20px;
+  text-align: center;
+
+  i {
+    color: #000000;
+    display: block;
+    font-size: 70px;
+    margin-bottom: 20px;
+  }
+}
+
+.feature-desc {
+  order: 2;
+
+  p {
+    color: #777777;
+    font-size: 20px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@include not-mobile() {
+  .feature {
+    .container {
+      flex-direction: row;
+    }
+  }
+  .feature-title {
+    font-size: 40px;
+    padding: 60px 0;
+    border-right: 5px solid #ffffff;
+    order: 1;
+
+    .feature-desc + & {
+      border-left: 5px solid #ffffff;
+      border-right: none;
+      order: 2;
+    }
+  }
+  .feature-desc {
+    p {
+      width: 70%;
+    }
+  }
+}

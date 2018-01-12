@@ -1,0 +1,87 @@
+.developers {
+  padding: 40px 0;
+  position: relative;
+
+  .subtitle {
+    text-align: center;
+  }
+
+  & > * {
+    z-index: 2;
+  }
+
+  &:before {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100 */
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.developers-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  p {
+    flex: 1 1 auto;
+    order: 2;
+  }
+
+  a {
+    color: #ff004a;
+    text-decoration: none;
+
+    &:hover {
+      color: #ff004a;
+      text-decoration: underline;
+    }
+  }
+}
+
+.developers-illust-left,
+.developers-illust-right {
+  flex: 1 1 150px;
+  height: auto;
+  max-width: 200px;
+  min-width: 150px;
+}
+
+.developers-illust-left {
+  margin: 0 0 10px 0;
+}
+
+.developers-illust-right {
+  margin: 0 0 10px 0;
+  order: 1
+}
+
+@include not-mobile() {
+  .developers-content {
+    flex-direction: row;
+    p {
+      order: 1;
+    }
+  }
+  .developers-illust-left,
+  .developers-illust-right {
+    flex: 1 1 100%;
+  }
+  .developers-illust-left {
+    margin: 0 40px 40px 0;
+  }
+  .developers-illust-right {
+    margin: 0 0 40px 40px;
+    order: 1;
+  }
+}

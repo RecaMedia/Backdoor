@@ -1,0 +1,29 @@
+@mixin not-mobile() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (min-width: 768px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin beyond-tablet() {
+  @media (min-width: 768px) and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin widescreen() {
+  @media (min-width: 1600px) {
+    @content;
+  }
+}
