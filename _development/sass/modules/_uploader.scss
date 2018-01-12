@@ -1,0 +1,89 @@
+.uploader-browse {
+  background-color: $dark;
+  border: 1px solid $gray;
+  border-right: none;
+  font-size: 1.6rem;
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    color: #ff004a;
+  }
+
+  input {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.uploader-btn-group {
+  border-bottom: 1px solid $dark;
+  font-size: 0;
+  width: 100%;
+
+  button {
+    display: inline-block;
+    font-size: 1.4rem;
+    height: 40px;
+    width: 50%;
+  }
+
+  button + button {
+    border-left: 1px solid $dark;
+  }
+}
+
+.uploader-queue {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    padding: 10px;
+    position: relative;
+    width: 100%;
+
+    & + & {
+      border-top: 1px solid $dark;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid $dark;
+    }
+
+    &__close {
+      height: 12px;
+      line-height: 12px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &__bar {
+      background-color: $lightCarbon;
+      height: 5px;
+      width: calc(100% - 30px);
+
+      &__progress {
+        background-color: $primaryColor;
+        height: 5px;
+      }
+    }
+
+    &__text {
+      font-size: 14px;
+
+      .uploader-queue__item__bar + & {
+        padding-top: 8px;
+      }
+    }
+  }
+}

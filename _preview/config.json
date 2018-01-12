@@ -1,0 +1,15 @@
+{
+    "backdoorDir": "_preview",
+    "backdoorDomain": "http:\/\/backdoor2.local",
+    "changeRoot": "_demo-root",
+    "defaultTheme": "monokai",
+    "domainIsBackdoorApp": "true",
+    "fontSize": "12px",
+    "lineWrapping": true,
+    "multiViewColors": [
+        "#007fff",
+        "#04ff00",
+        "#ff8300"
+    ],
+    "tabSize": 2
+}

@@ -1,0 +1,2 @@
+<?php
+ class Update extends Controller { public function index(){ if ($this->api_key && $this->api_member_key) { $um = $this->loadModel('updatemanagement'); $return = $um->processUpdate(); } else { $return = array('success' => false,'statusMessage' => 'Access denied.'); } echo json_encode($return); } }

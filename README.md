@@ -6,13 +6,13 @@ Backdoor is a standalone browser based code editor that operates on a LAMP serve
 
 ----
 
-### Installation
+### Development Setup
 
-To begin installation, goto the URL that points to the Backdoor directory followed by `/install`. For example, http://localhost/bkdr/install or http://bkdr.mydomain.com/install. The installation wizard should prepopulate some of the inputs for you. Make sure the folder name of the Backdoor application is correct as this may effect some functionality. The default folder name is `bkdr`, unless you change it.
+Coming soon...
 
 ### License
 
-Backdoor is FREE to use, distribute, or host. Backdoor can NOT be used to generate any type of profit. See [LICENSE](https://github.com/RecaMedia/Backdoor/blob/master/LICENSE.md) provided in this repository. Please contact the author for more information regarding licensing.
+GNU Affero General Public License v3.0
 
 ### Copyright
 

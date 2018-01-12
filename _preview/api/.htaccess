@@ -1,0 +1,31 @@
+<IfModule mod_rewrite.c>
+
+	Options -MultiViews
+
+	# Activates URL rewriting (like myproject.com/controller/action/1/2/3)
+	RewriteEngine On
+
+	# Disallows others to look directly into /public/ folder
+	Options -Indexes
+
+	# When using the script within a sub-folder, put this path here, like /mysubfolder/
+	# If your app is in the root of your web folder, then leave it commented out
+	# RewriteBase /bkdr2/api/
+
+	# Don't fix direct file links & check for post
+	RewriteCond %{REQUEST_METHOD}  !=POST
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-l
+
+	# Add trailing slash if needed
+	RewriteCond %{REQUEST_URI} !(.*)/$
+	RewriteRule ^(.*)$ $1/ [L,R=301]
+
+	# Don't fix direct file links & Capture all
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteRule ^(.+)$ index.php?request=$1 [QSA,L]
+
+</IfModule>

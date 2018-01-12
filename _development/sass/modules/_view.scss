@@ -1,0 +1,137 @@
+.view-tabs {
+	overflow: hidden;
+
+	ul {
+		background-color: $gray;
+		border-bottom: 1px solid $carbon;
+		height: 30px;
+		margin-left: -1px;
+		padding-top: 5px;
+		white-space: nowrap;
+
+		li {
+			background-color: $carbon;
+			border-top: 1px solid transparent;
+			border-left: 1px solid transparent;
+			border-right: 1px solid transparent;
+			display: inline-block;
+			height: 25px;
+			line-height: 25px;
+			margin-right: 5px;
+			max-width: 180px;
+			overflow: hidden;
+			padding: 0;
+			transition: background $menuSpeed, color $menuSpeed;
+			vertical-align: bottom;
+			white-space: nowrap;
+
+			&:hover {
+				background-color: $lightCarbon;
+			}
+
+			&.view-tabs--selected {
+				background-color: $gray;
+				border-color: $carbon;
+
+				&:hover {
+					background-color: $gray;
+
+					button {
+						color: $text;
+					}
+				}
+
+				button {
+					color: rgba($text, 0.75);
+				}
+			}
+
+			button {
+				color: $dark;
+				font-size: 13px;
+				font-weight: $bold;
+				height: 24px;
+				max-width: 146px;
+				overflow: hidden;
+				vertical-align: top;
+
+				&:first-child {
+					padding-left: 15px;
+					padding-right: 5px;
+				}
+
+				&:last-child {
+
+					&:hover {
+						color: $primaryColor;
+					}
+				}
+			}
+		}
+	}
+}
+
+.view-content, .CodeMirror {
+	height: calc(100vh - 75px);
+}
+
+.view-content {
+	position: relative;
+
+	.view {
+		background-color: $dark;
+		box-sizing: border-box;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+
+	.view--multi-active {
+		border-right: 1px solid $carbon;
+	}
+
+	.view--active {
+		z-index: 2;
+	}
+}
+
+.view--multi-active:last-of-type {
+	border-right: none;
+}
+
+.view-page {
+	background-color: $dark;
+	height: calc(100vh - 45px);
+	padding: 0 20px;
+	position: absolute;
+	width: 100%;
+}
+
+.view-page__container {
+	border-top: 1px solid $carbon;
+	padding-top: 20px;
+
+	p {
+		font-size: 13px;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+	}
+
+	a {
+		color: $primaryColor;
+	}
+}
+
+.view-page__wrapper {
+	max-width: 980px;
+	width: 100%;
+}
+
+.CodeMirror-linenumber {
+	background-color: $lightergray;
+}

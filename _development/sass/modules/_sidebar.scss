@@ -1,0 +1,46 @@
+.side-bar {
+	background-color: $dark;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	flex: 1 1 auto;
+	height: calc(100vh - 45px);
+
+	> ul {
+		display: inline-block;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		vertical-align: top;
+
+		button {
+			font-size: 20px;
+			height: 40px;
+			text-align: center;
+			width: 40px;
+		}
+	}
+}
+
+.side-bar__container {
+	background-color: $gray;
+	display: inline-block;
+	height: calc(100vh - 45px);
+	max-width: 300px;
+	min-width: 200px;
+	vertical-align: top;
+	width: 30vw;
+
+	.ui-resizable-e {
+		right: -2px;
+		width: 2px;
+	}
+}
+
+.side-bar__container__view {
+	display: none;
+}
+
+.side-bar__container__view--show {
+	display: block;
+}

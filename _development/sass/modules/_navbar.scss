@@ -1,0 +1,129 @@
+.nav-bar {
+	background-color: $dark;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	padding-left: 40px;
+	width: 100%;
+
+	&:after {
+		clear: both;
+		content: '';
+		display: table;
+	}
+
+	&__spacer {
+		background-color: $dark;
+		flex: 1 1 100%;
+	}
+
+	&__ad a {
+		background-color: $dark;
+		border-left: 1px solid $lightergray;
+		color: $textAd;
+		transition: color $menuSpeed;
+		
+		&:hover {
+			background-color: $dark;
+			color: $text;
+		}
+	}
+}
+
+.nav-bar__menu {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	font-size: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+	z-index: z('menu');
+
+	&:first-child {
+		flex: 1 1 100%;
+	}
+
+	&:last-child {
+		flex: 1 1 auto;
+	}
+
+	button, a, label {
+		@extend %menu-button;
+		border-radius: 0px;
+		padding: 0 10px;
+
+		&:hover + ul {
+			opacity: 1;
+			width: auto;
+		}
+	}
+
+	label {
+		color: $navLabelText;
+		cursor: normal;
+
+		&:hover {
+			background-color: $dark;
+			color: $navLabelText;
+		}
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		z-index: z('menu') - 2;
+	}
+
+	li {
+		position: relative;
+	}
+
+	> li {
+		display: inline-block;
+		vertical-align: top;
+		z-index: z('menu') - 2;
+
+		> button {
+			padding: 0 10px;
+
+			&:hover, &.button-active {
+				background-color: $dark;
+				color: $primaryColor;
+			}
+		}
+
+		> ul {
+			position: absolute;
+			top: 100%;
+			transform: translateY(-100%);
+			transition: transform $menuSpeed;
+
+			ul {
+				left: 100%;
+				opacity: 0;
+				position: absolute;
+				top: 0;
+				transition: width $menuSpeed, opacity $menuSpeed;
+				width: 0;
+
+				&:hover {
+					opacity: 1;
+					width: auto;
+				}
+			}
+
+			li.nav-bar__menu--open > ul {
+				opacity: 1;
+				width: 100%;
+			}
+		}
+
+		&.nav-bar__menu--open > ul {
+			transform: translateY(0);
+		}
+	}
+}

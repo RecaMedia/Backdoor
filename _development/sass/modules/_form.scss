@@ -1,0 +1,404 @@
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background: $darkPrimaryColor; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background: $darkPrimaryColor; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background: $darkPrimaryColor; }
+  to 	{ width:0; background:transparent; }
+}
+
+@include keyframes('checkbox-on') {
+  0% {
+    box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 15px 2px 0 11px;
+  }
+  50% {
+    box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px 2px 0 11px;
+  }
+  100% {
+    box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
+  }
+}
+@include keyframes('checkbox-off') {
+  0% {
+    box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px, 0 0 0 0 inset;
+  }
+  25% {
+    box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px, 0 0 0 0 inset;
+  }
+  50% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    margin-top: -4px;
+    margin-left: 6px;
+    width: 0px;
+    height: 0px;
+    box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 15px 2px 0 11px, 0 0 0 0 inset;
+  }
+  51% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    margin-top: -2px;
+    margin-left: -2px;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0px 0px 0 10px inset;
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    margin-top: -2px;
+    margin-left: -2px;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0px 0px 0 0px inset;
+  }
+}
+@include keyframes('rippleOn') {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(13, 13);
+            transform: scale(13, 13);
+  }
+}
+@include keyframes('rippleOff') {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(13, 13);
+            transform: scale(13, 13);
+  }
+}
+
+.form-signin {
+  -webkit-animation: fadeIn 1s ease forwards;
+  -moz-animation: fadeIn 1s ease forwards;
+  animation: fadeIn 1s ease forwards;
+
+  margin: 50vh auto 0;
+  max-width: 400px;
+  min-width: 300px;
+  opacity: 0;
+  padding: 10px;
+  transform: translateY(-50%);
+  width: 60%;
+
+  &--reg {
+    max-width: 640px;
+  }
+}
+
+.form-install {
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 40px 20px 20px;
+  width: 90%;
+}
+
+.form {
+
+  .check {
+    margin-right:1rem;
+    transition: color $menuSpeed;
+
+    .checkbox-material & {
+      color: $primaryColor;
+    }
+  }
+
+  .checkbox-material:before {
+    background-color: $primaryColor;
+  }
+
+  input[type=checkbox]:checked + .checkbox-material .check {
+    color: $primaryColor;
+  }
+
+  input[type=checkbox]:disabled + .checkbox-material .check {
+    color: $carbon;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+
+    &:active {
+      background:rgba(23, 24, 32, 0.15);
+        box-shadow: 0px 1px .5px 1px rgba(23, 24, 32, 0.15);
+    }
+  
+    label {
+      width:280px;
+      height:4rem;
+      display:flex;
+      align-items:center;
+      cursor: pointer;
+      padding-left: 0;
+    }
+
+    input[type=checkbox] {
+      opacity: 0;
+      position: absolute;
+      margin: 0;
+      z-index: -1;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      left: 0;
+      pointer-events: none;
+    }
+    
+    .checkbox-material {
+      vertical-align: middle;
+      position: relative;
+      top: 3px;
+
+      &:before {
+        position: absolute;
+        left: 8px;
+        top: 2px;
+        content: "";
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 4px;
+        width: 4px;
+        border-radius: 100%;
+        z-index: 1;
+        opacity: 0;
+        margin: 0;
+      }
+
+      .check {
+        border-radius: 2px;
+        border: 2px solid;
+        display: inline-block;
+        height: 20px;
+        overflow: hidden;
+        position: relative;
+        width: 20px;
+        z-index: 1;
+
+        &:before {
+          position: absolute;
+          content: "";
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+          display: block;
+          margin-top: -4px;
+          margin-left: 6px;
+          width: 0;
+          height: 0;
+          box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0 inset;
+          -webkit-animation: checkbox-off 0.3s forwards ease-out;
+          animation: checkbox-off 0.3s forwards ease-out;
+        }
+      }
+    }
+
+    .checkbox-title {
+      font-size: 15px;
+      transition: color $menuSpeed;
+    }
+    
+    input[type=checkbox]:focus + .checkbox-material .check:after {
+      opacity: 0.2;
+    }
+    
+    input[type=checkbox]:checked + .checkbox-material .check:before {
+      box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0px 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
+      -webkit-animation: checkbox-on 0.3s forwards ease-out;
+              animation: checkbox-on 0.3s forwards ease-out;
+    }
+    
+    input[type=checkbox]:not(:checked) + .checkbox-material:before {
+      -webkit-animation: rippleOff 700ms forwards ease-out;
+              animation: rippleOff 700ms forwards ease-out;
+    }
+    
+    input[type=checkbox]:checked + .checkbox-material:before {
+      -webkit-animation: rippleOn 700ms forwards ease-out;
+              animation: rippleOn 700ms forwards ease-out;
+    }
+    
+    input[type=checkbox]:not(:checked) + .checkbox-material .check:after {
+      -webkit-animation: rippleOff 700ms forwards ease-out;
+              animation: rippleOff 700ms forwards ease-out;
+    }
+    
+    input[type=checkbox]:checked + .checkbox-material .check:after {
+      -webkit-animation: rippleOn 700ms forwards ease-out;
+              animation: rippleOn 700ms forwards ease-out;
+    }
+    
+    input[type=checkbox][disabled]:not(:checked) ~ .checkbox-material .check:before,
+    input[type=checkbox][disabled] + .circle {
+      opacity: 0.5;
+    }
+    
+    input[type=checkbox][disabled] + .checkbox-material .check:after {
+      background-color: rgba(0, 0, 0, 0.84);
+      -webkit-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+    }
+    
+    input[type=checkbox]:checked + .checkbox-material + .checkbox-title {
+      color: $primaryColor;
+    }
+
+    input[type=checkbox]:disabled + .checkbox-material + .checkbox-title {
+      color: $carbon;
+    }
+  }
+
+  .group { 
+    position: relative; 
+    margin-bottom: 30px; 
+
+    &.center {
+      text-align: center;
+    }
+
+    input {
+      @include appearance(none);
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid $carbon;
+      color: transparent;
+      display: block;
+      font-size: 15px;
+      padding: 15px 10px 10px 5px;
+      transition: color 250ms;
+      width: 100%;
+  
+      &:valid, &:focus {
+        color: $text
+      }
+    }
+
+    input:focus {
+      outline: none;
+    }
+    
+    /* LABEL ======================================= */
+    input:not(:valid) ~ label, label {
+      color: $darkCarbon; 
+      font-size: 15px;
+      font-weight: normal;
+      position: absolute;
+      pointer-events: none;
+      left: 5px;
+      top: 10px;
+      transition: 0.2s ease all; 
+      -moz-transition: 0.2s ease all; 
+      -webkit-transition: 0.2s ease all;
+    }
+    
+    /* active state */
+    input:focus ~ label, input:valid:required ~ label, input:not(:empty) ~ label, input:not(:required):not(:placeholder-shown) ~ label	{
+      top: 0;
+      font-size: 13px;
+      color: $primaryColor;
+    }
+    
+    &.error input:focus ~ label, &.error input:valid ~ label, &.error input:not(:empty) ~ label	{
+      color: #ffc400;
+    }
+
+      /* BOTTOM BARS ================================= */
+    .bar 	{ position: relative; display: block; width: 100%; }
+    .bar:before, .bar:after 	{
+      content:'';
+      height: 2px; 
+      width: 0;
+      bottom: 1px; 
+      position: absolute;
+      background: $primaryColor; 
+      transition: 0.2s ease all; 
+      -moz-transition: 0.2s ease all; 
+      -webkit-transition: 0.2s ease all;
+    }
+    .bar:before {
+      left: 50%;
+    }
+    .bar:after {
+      right: 50%; 
+    }
+
+    &.error .bar:before, &.error .bar:after {
+      background: #ffc400;
+      width: 50%;
+    }
+    
+    /* active state */
+    input:focus ~ .bar:before, input:focus ~ .bar:after {
+      width: 50%;
+    }
+    
+    /* HIGHLIGHTER ================================== */
+    .highlight {
+      position: absolute;
+      height: 60%; 
+      width: 100%; 
+      top: 25%; 
+      left: 0;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    
+    /* active state */
+    input:focus ~ .highlight {
+      -webkit-animation:inputHighlighter 0.3s ease;
+      -moz-animation:inputHighlighter 0.3s ease;
+      animation:inputHighlighter 0.3s ease;
+    }
+  }
+}
+
+.form-button {
+  @include appearance(none);
+  @include border-radius(4px);
+	background-color: $primaryColor;
+	cursor: pointer;
+	outline: none;
+	padding: 5px 20px;
+	transition: color $menuSpeed, background-color $menuSpeed, width $menuSpeed, height $menuSpeed, font-size $menuSpeed;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  margin: 0 auto;
+  min-width: 80px;
+
+	&:hover {
+    background-color: $darkPrimaryColor;
+    color: #ffffff !important;
+	}
+}
+
+.sign-in-logo {
+  margin: 0 auto;
+  max-width: 200px;
+  width: 100%;
+}
+
+.sign-in-ad {
+  height: auto;
+  margin: 0 auto;
+  max-height: 60px;
+  max-width: 120px;
+}
+
+.install-logo {
+  margin: 0 auto;
+  max-width: 300px;
+  width: 100%;
+}

@@ -1,0 +1,80 @@
+.user-list {
+
+  &__row {
+    border: 1px solid $gray;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    transition: height $menuSpeed;
+
+    & + .user-list__row {
+      border-top: none;
+    }
+
+    &.user-list__row--open {
+      height: auto;
+    }
+  }
+
+  &__header {
+    @include flex-display();
+    @include flex-direction-row();
+    background-color: $dark;
+    border-bottom: 1px solid $gray;
+    flex-wrap: nowrap;
+    padding: 15px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__name, &__toggle {
+    align-items: flex-start;
+    height: 18px;
+  }
+
+  &__name {
+    @include flex(1 1 auto);
+    font-size: 16px !important;
+    line-height: 16px;
+    margin: 0;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  &__toggle {
+    @include flex(0 0 18px);
+    font-size: 0;
+    height: 18px;
+    line-height: 18px;
+    padding: 0;
+    transform: rotate(0deg);
+    transition: transform $menuSpeed;
+
+    i {
+      font-size: 16px;
+      height: 18px;
+      line-height: 18px;
+    }
+
+    .user-list__row--open & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__settings {
+    background-color: $navLabelBg;
+    padding: 10px 15px;
+    position: absolute;
+    transform: translateY(-100%);
+    //transition: transform $menuSpeed;
+
+    .user-list__row--open & {
+      position: relative;
+      transform: translateY(0);
+    }
+  }
+
+  .form-button {
+    width: 100%;
+  }
+}

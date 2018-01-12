@@ -1,0 +1,58 @@
+.extension-manager {
+  padding: 0;
+
+  & > p {
+    padding: 0 10px;
+  }
+
+  &__item {
+    border: 1px solid $gray;
+    border-bottom: 1px solid $darkCarbon;
+    border-right: none;
+    color: $text;
+    padding: 8px 10px 12px;
+    transition: background $menuSpeed;
+
+    &:hover {
+      background-color: $dark;
+    }
+
+    strong {
+      color: #d0d0d0;
+    }
+
+    p {
+      line-height: 20px;
+      margin: 0 0 5px;
+    }
+
+    button,
+    a {
+      background-color: $carbon;
+      border-radius: 0;
+      color: #000000;
+      display: inline-block;
+      font-weight: bold;
+      line-height: 12px;
+      padding: 3px 6px;
+      text-decoration: none;
+      transition: color $menuSpeed, background-color $menuSpeed;
+
+      &:hover {
+        background-color: $darkPrimaryColor;
+      }
+
+      & + button, & + a {
+        margin-left: 5px;
+      }
+    }
+
+    button:first-of-type {
+      background-color: $primaryColor;
+    }
+
+    & + & {
+      border-top: none;
+    }
+  }
+}

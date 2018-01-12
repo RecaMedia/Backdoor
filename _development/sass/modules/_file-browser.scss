@@ -1,0 +1,79 @@
+.file-browser {
+	height: 100%;
+	left: 0;
+	overflow: auto;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	width: 100%;
+
+	i {
+		font-style: normal;
+		line-height: 1.6em;
+		white-space: nowrap;
+
+		&:before {
+			padding-right: 5px;
+		}
+	}
+
+	.hide-dir {
+		
+		ul {
+			display: none;
+		}
+	}
+
+	.highlight-dir {
+
+		& > button {
+			color: #ffffff;
+		}
+	}
+
+	li[data-type="file"] {
+
+		&.highlight-file {
+			background-color: darken($text,50%);
+		}
+	}
+
+	li[data-type="folder"] > div > ul > li {
+		padding-left: 20px;
+		position: relative;
+
+		button {
+			height: 20px;
+		}
+
+		&:before, &:after {
+			content:'';
+			display: block;
+			position: absolute;
+		}
+
+		&:before {
+			border-left: 1px dashed $text;
+			height: 100%;
+			left: 10px;
+			top: 0;
+		}
+
+		&:after {
+			border-bottom: 1px dashed $text;
+			left: 10px;
+			top: 10px;
+			width: 10px;
+		}
+
+		&:last-child {
+
+			&:before {
+				border-left: 1px dashed $text;
+				height: 10px;
+				left: 10px;
+				top: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,2 @@
+<?php
+ class Session extends Controller { public function index(){ if ($this->api_key) { $return = array( 'session' => $this->sess ); } else { $return = array('success' => false,'statusMessage' => 'Access denied.'); } echo json_encode($return); } public function signedin(){ if ($this->api_key) { $return = array( 'key' => (isset($_SESSION['bdmemberkey'])?$_SESSION['bdmemberkey']:"") ); } else { $return = array('success' => false,'statusMessage' => 'Access denied.'); } echo json_encode($return); } } ?>

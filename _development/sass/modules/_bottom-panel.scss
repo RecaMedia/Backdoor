@@ -1,0 +1,53 @@
+.bottom-panel {
+  background-color: $dark;
+  border-top: 1px solid $darkCarbon;
+  bottom: 0 !important;
+  color: $subText;;
+  display: none;
+  flex: 1 1 auto;
+  min-height: 150px;
+  order: 2;
+  position: relative !important;
+  top: auto !important;
+  width: 100%;
+  z-index: 3;
+
+  .show-bottom-panel & {
+    display: block;
+  }
+
+  ul {
+    background-color: $dark;
+    border-bottom: 1px solid #000000;
+    height: 22px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    button {
+      border-right: 1px solid #000000;
+      padding: 2px 8px;
+    }
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  &__container {
+    height: calc(100% - 20px);
+    left: 0;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+
+    &__view {
+      display: none;
+    }
+
+    &__view--show {
+      display: block;
+    }
+  }
+}

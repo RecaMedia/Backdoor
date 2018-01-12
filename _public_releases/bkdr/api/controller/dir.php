@@ -1,0 +1,2 @@
+<?php
+ class Dir extends Controller { public function index(){ if ($this->api_key && $this->api_member_key) { $dm = $this->loadModel('directorymanagement'); $return = $dm->get(); } else { $return = array('success' => false,'statusMessage' => 'Access denied.'); } echo json_encode($return); } }

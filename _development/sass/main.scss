@@ -1,0 +1,36 @@
+@import 
+
+// Vendors
+"vendors/font-awesome/font-awesome",
+"vendors/jquery-ui/jquery-ui-1.10.4.custom",
+"vendors/bootstrap",
+
+// Codemirror
+"vendors/codemirror/codemirror",
+"vendors/codemirror/monokai",
+"vendors/codemirror/show-hint",
+"vendors/codemirror/dialog",
+"vendors/codemirror/matchesonscrollbar",
+"../../node_modules/sweetalert/dev/sweetalert.scss",
+
+// Base
+"base/vars",
+"base/z-index",
+"base/util",
+"base/global",
+"base/footer",
+
+// Modules
+"modules/bottom-panel",
+"modules/console",
+"modules/context-menu",
+"modules/extensions",
+"modules/file-browser",
+"modules/fonts",
+"modules/form",
+"modules/navbar",
+"modules/sidebar",
+"modules/sweet-alert-custom",
+"modules/uploader",
+"modules/user-list",
+"modules/view";

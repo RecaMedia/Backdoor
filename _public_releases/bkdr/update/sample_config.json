@@ -1,0 +1,15 @@
+{
+  "backdoorDir": "bkdr",
+  "backdoorDomain": "http://yourdomain.com",
+  "changeRoot": "",
+  "defaultTheme": "monokai",
+  "domainIsBackdoorApp": true,
+  "fontSize": "14px",
+  "lineWrapping": true,
+  "multiViewColors": [
+      "#007fff",
+      "#04ff00",
+      "#ff8300"
+  ],
+  "tabSize": 2
+}
