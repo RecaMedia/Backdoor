@@ -24,9 +24,10 @@ class Home extends React.Component {
 				$body.toggleClass('menu--open');
 			});
 			$('.nav a').not('.menu-download a').click(function(e) {
-				if ($(this).hasAttr("data-anchor")) {
+				var id = $(this).attr('data-anchor');
+				// For some browsers, `id` is undefined; for others, `id` is false. Check for both.
+				if (typeof id !== typeof undefined && id !== false) {
 					e.preventDefault();
-					var id = $(this).attr('data-anchor');
 					$html.animate({ scrollTop: $('[name="' + id + '"]').offset().top}, 'slow');
 				}
 			}); 
@@ -43,7 +44,7 @@ class Home extends React.Component {
 		return (
 			<div>
 				<section className="what-is-backdoor">
-					<h2 className="subtitle"><a name="about">About Backdoor</a></h2><img src="/assets/img/languages.svg" className="languages"/>
+					<h2 className="subtitle"><a name="about">About Backdoor</a></h2><img src="/Backdoor/assets/img/languages.svg" className="languages"/>
 					<div className="container">
 						<p>BKDR, short for Backdoor, is an in-browser code editor for developers. Backdoor was created with the idea of speeding up and simplifying the development process, by having an editor directly on the development server, it allows you to have the flexibility of coding on any device connected to the internet. Backdoor can quickly be deployed with a simple upload and running the built-in install wizard.</p>
 					</div>
@@ -80,11 +81,11 @@ class Home extends React.Component {
 				<section className="developers">
 					<div className="container">
 						<h2 className="subtitle"><a name="developers">Developers Join In</a></h2>
-						<div className="developers-content"> <img src="/assets/img/computer_illustration.svg" className="developers-illust-left"/>
+						<div className="developers-content"> <img src="/Backdoor/assets/img/computer_illustration.svg" className="developers-illust-left"/>
 							<p>Backdoor's extension API was designed with the idea of opening the doors to creativity beyond the core. Developers can now create tools not only for themselves, but for the community as well. This allows the user base to leverage the need for newer features.</p>
 						</div>
 						<div className="developers-content">
-							<p>Rebuilt from the ground up, JavaScript and PHP are the primary languages Backdoor is built on. These are also the languages for creating extensions, with JavaScript being the primary interface. You can read more about creating extensions at <a href="https://backdoor.gitbooks.io/extensions/content/" target="_blank">Gitbooks</a></p><img src="/assets/img/blueprint_illustration.svg" className="developers-illust-right"/>
+							<p>Rebuilt from the ground up, JavaScript and PHP are the primary languages Backdoor is built on. These are also the languages for creating extensions, with JavaScript being the primary interface. You can read more about creating extensions at <a href="https://backdoor.gitbooks.io/extensions/content/" target="_blank">Gitbooks</a></p><img src="/Backdoor/assets/img/blueprint_illustration.svg" className="developers-illust-right"/>
 						</div>
 					</div>
 				</section>

@@ -49,7 +49,7 @@ class Nav extends React.Component {
     return (
       <nav className="nav">
         <div className="container">
-          <a data-anchor="welcome" href="#welcome"><img src="/assets/img/bkdr_logo_pro_black.svg" alt="Backdoor Code Editor" className="logo"/></a>
+          <a data-anchor="welcome" href="#welcome"><img src="/Backdoor/assets/img/bkdr_logo_pro_black.svg" alt="Backdoor Code Editor" className="logo"/></a>
           <div className="menu-wrapper">
             <a id="menubutton" role="button" aria-haspopup="true" aria-controls="menu" className="menu-button"></a>
             <ul id="menu" role="menu" tabIndex="-1" aria-labelledby="menubutton" className="menu">
