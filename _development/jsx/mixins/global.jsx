@@ -226,7 +226,7 @@ const GlobalFunctions = {
 					confirmButtonText: "Update"
 				}, (isConfirm) => {
 					if (isConfirm) {
-						this.updateApp();
+						this.updateApp(data[0].zipball_url);
 					}			
 				});
 			} else {
@@ -242,12 +242,12 @@ const GlobalFunctions = {
 		});
 	},
 
-	updateApp: function() {
+	updateApp: function(downloadUrl) {
 		var state = store.getState();
 		let url = state.global.config.backdoorFullUrl + '/api/update/';
 		
 		let formData = new FormData();
-		formData.append('downloadUrl','https://api.github.com/repos/RecaMedia/Backdoor-Release/zipball/master');
+		formData.append('downloadUrl', downloadUrl);
 
 		fetch(url, {
 			method: 'POST',

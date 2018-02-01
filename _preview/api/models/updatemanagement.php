@@ -107,36 +107,36 @@ class UpdateManagement extends Controller{
       $stored_bkdr = $update_folder . "previous_bkdr" . DIRECTORY_SEPARATOR;
 
       $url = $_POST['downloadUrl'];
-      $zipFile = $update_folder . "update.zip";
-      $zipResource = fopen($zipFile, "w");
+      // $zipFile = $update_folder . "update.zip";
+      // $zipResource = fopen($zipFile, "w");
 
-      // Get The Zip File From Server.
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, $url);
-      curl_setopt($ch, CURLOPT_FAILONERROR, true);
-      curl_setopt($ch, CURLOPT_HEADER, 0);
-      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-      curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-      curl_setopt($ch, CURLOPT_BINARYTRANSFER,true);
-      curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
-      curl_setopt($ch, CURLOPT_FILE, $zipResource);
-      $page = curl_exec($ch);
-      curl_close($ch);
+      // // Get The Zip File From Server.
+      // $ch = curl_init();
+      // curl_setopt($ch, CURLOPT_URL, $url);
+      // curl_setopt($ch, CURLOPT_FAILONERROR, true);
+      // curl_setopt($ch, CURLOPT_HEADER, 0);
+      // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+      // curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+      // curl_setopt($ch, CURLOPT_BINARYTRANSFER,true);
+      // curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+      // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+      // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
+      // curl_setopt($ch, CURLOPT_FILE, $zipResource);
+      // $page = curl_exec($ch);
+      // curl_close($ch);
 
-      // Fail if not downloaded.
-      if(!$page) {
-        return array(
-          'success' => false,
-          'statusMessage' => "Download failed."
-        );
-      }
+      // // Fail if not downloaded.
+      // if(!$page) {
+      //   return array(
+      //     'success' => false,
+      //     'statusMessage' => "Download failed."
+      //   );
+      // }
 
       // Extract Zip File.
       $zip = new ZipArchive;
       // Fail if not extracted.
-      if($zip->open($zipFile) != "true"){
+      if($zip->open($url) != "true"){
         return array(
           'success' => false,
           'statusMessage' => "Zip extraction failed."
