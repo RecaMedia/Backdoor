@@ -108,7 +108,7 @@ class Main extends React.Component {
 
 		myHeaders.append("bd2-api-key", this.app_state.global.config.apiKey);
 		
-		if (this.app_state.global.session == null) {
+		if (this.app_state.global.session == undefined || this.app_state.global.session == null) {
 			// Get session id if not already provided.
 			fetch(url,{
 				method: 'POST',
