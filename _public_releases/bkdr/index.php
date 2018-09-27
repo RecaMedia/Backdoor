@@ -3,10 +3,10 @@
 @category   Code Editor
 @package    Backdoor Code Editor
 @author     Shannon Reca
-@copyright  2017 Shannon Reca - RecaMedia LLC
-@usage      For more specific usage see the documentation at http://bkdr.org
-@license    http://bkdr.pro/license
-@version    build-121317 v2.0.0
+@copyright  2018 RM Digital Services
+@usage      For installation visit https://github.com/RecaMedia/Backdoor-Release
+@license    https://github.com/RecaMedia/Backdoor-Release/blob/master/LICENSE
+@version    build-092618 v2.0.5
 */
 
 // Defaults.
