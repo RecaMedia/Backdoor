@@ -94,9 +94,9 @@ gulp.task('build-sass', function() {
 
 gulp.task('deploy-sass', function() {
 	var sass = require('gulp-sass');
-	var cssNano = require('gulp-cssnano');
-	var bourbon = require('node-bourbon');
-	var bless = require('gulp-bless');
+	// var cssNano = require('gulp-cssnano');
+	// var bless = require('gulp-bless');
+	var cleanCSS = require('gulp-clean-css');
 
 	return gulp.src(DEV_SASS)
 		.pipe(sass({
@@ -107,12 +107,8 @@ gulp.task('deploy-sass', function() {
 		.on("error", notify.onError({
 			message: 'Error: <%= error.message %>'
 		}))
-		.pipe(cssNano())
-		// in order for bless to work correctly it needs to strip out comments before it parses the CSS
-		.pipe(bless({
-			cacheBuster: true,
-			cleanup: true,
-			compress: true
+		.pipe(cleanCSS({
+			compatibility: 'ie8'
 		}))
 		.pipe(gulp.dest(PRO_CSS))
 		.pipe(gulp.dest(REL_CSS));

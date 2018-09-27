@@ -59,7 +59,15 @@ class RBTN extends React.Component {
 		
 		if (this.props.loadFile) {
 
-			var is_open = _.findWhere(this.app_state.files.views, {viewid: this.props.browserObj.path});
+			// var is_open = _.findWhere(this.app_state.files.views, {viewid: this.props.browserObj.path});
+			
+			var is_open = false;
+			
+			is_open = _.find(this.app_state.files.views, (view) => {
+				if (_.matches(view)({viewid: this.props.browserObj.path})) {
+					return true;
+				}
+			});
 
 			if (!is_open) {
 				store.dispatch({

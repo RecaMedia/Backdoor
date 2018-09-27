@@ -1,6 +1,4 @@
 import React from 'react';
-import {findDOMNode} from 'react-dom';
-import {Provider} from 'react-redux';
 import store from './store';
 
 import LoadScreen from './components/loadscreen';
@@ -90,12 +88,16 @@ class Main extends React.Component {
 				});
 				_self.socket.emit('store_client_info', user_data);
 				console.log('Connected to Backdoor 2 Pro Server.');
+			}).on('connect_error', function(){
+				store.dispatch({
+					type: "DISCONNECT_SOCKET"
+				});
 			}).on('update_users', function(users){
 				store.dispatch({
 					type: "UPDATE_USERS",
 					payload: users
 				});
-			});
+			})
 		}
 		
 		// Check for session id.

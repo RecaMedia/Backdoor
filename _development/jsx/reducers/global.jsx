@@ -32,23 +32,25 @@ const global = function(state = {}, action) {
 				return response.json();
 			}).then(function(data) {
 				// https://stackoverflow.com/questions/24337317/encrypt-with-php-decrypt-with-javascript-cryptojs
-				let key = CryptoJS.enc.Utf8.parse('Kx#MX!83@1zQ2oC4');
-				let iv = CryptoJS.enc.Base64.parse(data.part1);
-				let ciphertext = data.part2;
-				let plaintext = CryptoJS.AES.decrypt(ciphertext, key, {
-					iv: iv,
-					padding: CryptoJS.pad.NoPadding
-				});
-				let preconfig = CryptoJS.enc.Utf8.stringify(plaintext);
-				let preconfig_clean = preconfig.substring(0, preconfig.lastIndexOf('}') + 1);
-				let config = JSON.parse(preconfig_clean);
+				// let key = CryptoJS.enc.Utf8.parse('Kx#MX!83@1zQ2oC4');
+				// let iv = CryptoJS.enc.Base64.parse(data.part1);
+				// let ciphertext = data.part2;
+				// let plaintext = CryptoJS.AES.decrypt(ciphertext, key, {
+				// 	iv: iv,
+				// 	padding: CryptoJS.pad.NoPadding
+				// });
+				// let preconfig = CryptoJS.enc.Utf8.stringify(plaintext);
+				// let preconfig_clean = preconfig.substring(0, preconfig.lastIndexOf('}') + 1);
+				// let config = JSON.parse(preconfig_clean);
 
-				// Set full URL path to access web app.
-				// if (config.domainIsBackdoorApp) {
-					config.backdoorFullUrl = config.backdoorDomain;
-				// } else {
-				// 	config.backdoorFullUrl = config.backdoorDomain + '/' + config.backdoorDir;
-				// }
+				let config = JSON.parse(atob(data.config));
+
+				// // Set full URL path to access web app.
+				// // if (config.domainIsBackdoorApp) {
+				 	config.backdoorFullUrl = config.backdoorDomain;
+				// // } else {
+				// // 	config.backdoorFullUrl = config.backdoorDomain + '/' + config.backdoorDir;
+				// // }
 
 				action.asyncDispatch({
 					type: "UPDATE_GLOBAL",
@@ -146,6 +148,18 @@ const global = function(state = {}, action) {
 
 			action.asyncDispatch({
 				type: "CHECK_SIGNOUT"
+			});
+
+			break;
+		}
+
+		case "DISCONNECT_SOCKET" : {
+
+			state.socket.close();
+			console.error("Connection has now closed.")
+
+			state = Object.assign({}, state, {
+				socket: null
 			});
 
 			break;
