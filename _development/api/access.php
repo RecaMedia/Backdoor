@@ -6,7 +6,7 @@
 @copyright  2018 Shannon Reca
 @usage      For more information visit https://github.com/RecaMedia/Backdoor
 @license    https://github.com/RecaMedia/Backdoor/blob/master/LICENSE
-@version    v2.0.4
+@version    v2.0.6
 @since      01/12/18
 */
 

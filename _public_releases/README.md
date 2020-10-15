@@ -1,6 +1,6 @@
 # Backdoor - Browser Based Code Editor
 
-Backdoor is a standalone browser based code editor that operates on a LAMP server, providing all basic development tools with the ability of adding new features via extensions and services. This is the Backdoor-Release __*COMPILED*__ version of Backdoor. For the development version of Backdoor, please visit the [Backdoor Repo](https://github.com/RecaMedia/Backdoor).
+Backdoor is a standalone browser based code editor that operates on a LASP (Linux, Apache, SQLite, PHP) server, providing all basic development tools with the ability of adding new features via extensions and services. This is the Backdoor-Release __*COMPILED*__ version of Backdoor. For the development version of Backdoor, please visit the [Backdoor Repo](https://github.com/RecaMedia/Backdoor).
 
 ![Backdoor][screenshot]
 
