@@ -452,9 +452,8 @@ class FileManagement extends Controller{
 					$success = false;
 
 					if(isset($_FILES['file'])){
-						// Count # of uploaded files in array
-						$total = count($_FILES['file']['name']);
-						if ($total > 0) {
+						// Check if file is not undefined
+						if ($_FILES['file']['name']) {
 							// Denie unpermitted file types
 							$denied_files = array();
 							if (!in_array($_FILES['file']['type'], $denied_files)) {

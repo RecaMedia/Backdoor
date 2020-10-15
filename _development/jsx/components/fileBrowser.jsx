@@ -1,6 +1,6 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
-import $ from 'jquery';
+// import $ from 'jquery';
 import _ from 'lodash';
 import store from '../store';
 

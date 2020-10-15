@@ -1,4 +1,4 @@
-import $ from 'jquery';
+// import $ from 'jquery';
 import io from 'socket.io-client';
 import CryptoJS from 'crypto-js';
 import Cookies from 'js-cookie';
@@ -43,6 +43,7 @@ const global = function(state = {}, action) {
 				// let preconfig_clean = preconfig.substring(0, preconfig.lastIndexOf('}') + 1);
 				// let config = JSON.parse(preconfig_clean);
 
+				/* SIMPLIFIED ENCRYPTION FOR NOW */
 				let config = JSON.parse(atob(data.config));
 
 				// // Set full URL path to access web app.

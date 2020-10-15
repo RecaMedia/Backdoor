@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
-import $ from 'jquery';
+// import $ from 'jquery';
 import store from '../store';
 
 import ErrorBoundary from './errorBoundary';

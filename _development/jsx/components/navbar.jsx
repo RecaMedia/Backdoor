@@ -1,6 +1,6 @@
 import React from 'react';
 import Cookies from 'js-cookie';
-import $ from 'jquery';
+// import $ from 'jquery';
 import store from '../store';
 
 import mixin from '../mixins/global';

@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
-import $ from 'jquery';
-import 'jquery-ui';
+// import $ from 'jquery';
+// import 'jquery-ui';
 import store from '../store';
 
 import FileTab from './fileTab';

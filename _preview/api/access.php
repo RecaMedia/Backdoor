@@ -62,7 +62,7 @@ class Access {
 			$this->sess = session_id();
 		}
 
-		session_save_path('/');
+		// session_save_path('/');
 		
 		// open db connection, set domain var and login key.
 		$this->openDatabaseConnection();

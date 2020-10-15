@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import store from '../store';
 
 // Global Functions

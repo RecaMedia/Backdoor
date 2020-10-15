@@ -1,15 +1,3 @@
-//**** EDIT THIS URL ****//
-// Use this URL to point to the directory where your PHP/HTML files are being served locally.
-var URL = "backdoor2.local/";
-//**** EDIT THIS URL ****//
-
-
-//**** BUILD OPTION ****//
-// By default, this is set for just creating basic HTML files. Change to true to set the default to PHP.
-var usePHP = false;
-//**** BUILD OPTION ****//
-
-
 // Development File Structure
 var MAIN_DIR = "_preview";
 var AST_DIR = MAIN_DIR + "/assets";
@@ -47,46 +35,42 @@ var REL_FONTS = RELEASE_AST_DIR + "/fonts";
 
 var WATCH_FILES = [PRO_CSS,PRO_JS,DEV_JADE];
 
-var dev = false;
-
-
 // Include gulp/gulp plugins
 var gulp = require('gulp');
-var rename = require('gulp-rename');
+var cedx = require('@cedx/gulp-php-minify');
 var notify = require('gulp-notify');
 var browserSync = require('browser-sync').create();
-var uglify = require('gulp-uglify');
 var buffer = require('vinyl-buffer');
-var phpMinify = require('@aquafadas/gulp-php-minify');
 
 
-gulp.task('set-dev-node-env', function() {
-	dev = true;
-  return process.env.NODE_ENV = 'development';
+gulp.task('set_to_dev', function(done) {
+	process.env.NODE_ENV = 'development';
+	done();
+});
+gulp.task('set_to_prod', function(done) {
+	process.env.NODE_ENV = 'production';
+	done();
 });
 
-gulp.task('set-prod-node-env', function() {
-  return process.env.NODE_ENV = 'production';
-});
 
-// Sass Task
 gulp.task('build-sass', function() {
-	var gulpSass = require('gulp-sass');
-	var bourbon = require('node-bourbon');
+	var sass = require('gulp-sass');
+	var concat = require('gulp-concat');
 
 	var sassOptions = {
 		errLogToConsole: true,
 		linefeed: 'lf', // 'lf'/'crlf'/'cr'/'lfcr'
-		outputStyle: 'compressed', // 'nested','expanded','compact','compressed'
+		outputStyle: 'expanded', // 'nested','expanded','compact','compressed'
 		sourceComments: false,
-		includePaths: bourbon.includePaths
+		includePaths: []
 	};
 
 	return gulp.src(DEV_SASS)
-		.pipe(gulpSass(sassOptions))
+		.pipe(sass(sassOptions))
 		.on("error", notify.onError({
 			message: 'Error: <%= error.message %>'
 		}))
+		.pipe(concat('main.css'))
 		.pipe(browserSync.stream())
 		.pipe(gulp.dest(PRO_CSS));
 });
@@ -94,169 +78,81 @@ gulp.task('build-sass', function() {
 
 gulp.task('deploy-sass', function() {
 	var sass = require('gulp-sass');
-	// var cssNano = require('gulp-cssnano');
-	// var bless = require('gulp-bless');
-	var cleanCSS = require('gulp-clean-css');
+	var cssmin = require('gulp-cssmin');
+	var concat = require('gulp-concat');
+
+	var sassOptions = {
+		errLogToConsole: true,
+		outputStyle: 'compressed',
+		sourceComments: false
+	}
 
 	return gulp.src(DEV_SASS)
-		.pipe(sass({
-			errLogToConsole: true,
-			outputStyle: 'compressed',
-			sourceComments: false
-		}))
-		.on("error", notify.onError({
-			message: 'Error: <%= error.message %>'
-		}))
-		.pipe(cleanCSS({
-			compatibility: 'ie8'
-		}))
-		.pipe(gulp.dest(PRO_CSS))
+		.pipe(sass(sassOptions))
+		.pipe(concat('main.css'))
+		.pipe(cssmin())
 		.pipe(gulp.dest(REL_CSS));
-});
-
-// Minify Images
-gulp.task('build-images', function() {
-	var imagemin = require('gulp-imagemin');
-	var pngcrush = require('imagemin-pngcrush');
-	var svgmin = require('gulp-svgmin');
-
-	gulp.src(DEV_IMG)
-		.pipe(imagemin({
-				progressive: true,
-				svgoPlugins: [{removeViewBox: false}],
-				use: [pngcrush()]
-		}))
-		.pipe(gulp.dest(PRO_IMG))
-		.pipe(gulp.dest(REL_IMG));
-
-	return gulp.src(DEV_SVG)
-		.pipe(svgmin())
-		.pipe(gulp.dest(PRO_IMG))
-		.pipe(gulp.dest(REL_IMG));
-});
-
-
-// JS Task
-gulp.task('build-js', function() {
-	// var browserify = require('browserify');
-	// var babelify = require('babelify');
-	// var source = require('vinyl-source-stream');
-
-  // return browserify({
-  //     entries: DEV_DIR + "/js/init.js",
-  //     extensions: ['.js'],
-  //     debug: true
-  //   })
-  //   .transform('babelify', {presets: ['es2015']})
-  //   .bundle()
-  //   .pipe(source('init.js'))
-  //   .on("error", notify.onError({
-  //     message: 'Error: <%= error.message %>'
-  //   }))
-  //   .pipe(browserSync.stream())
-	// 	.pipe(gulp.dest(PRO_JS))
-	// 	.pipe(gulp.dest(REL_JS));
 });
 
 
 // React Task
-gulp.task('build-react', function(cb) {
+gulp.task('build-react', function() {
 	var browserify = require('browserify');
-	var babelify = require('babelify');
 	var source = require('vinyl-source-stream');
-	var envify = require('gulp-envify');
-	var pump = require('pump');
-	var gConcat = require('gulp-concat');
+	var minifyJS = require('gulp-minify');
 	var bundle_name = 'bkdr.js';
 
-	if (dev) {
-		process.env.NODE_ENV = 'development';
-		return browserify({
-			entries: DEV_JSX_APP,
-			extensions: ['.jsx'],
-			debug: true
-		})
-		.transform('babelify', {presets: ['es2015', 'es2017', 'react']})
-		.bundle()
-		.pipe(source(bundle_name))
-		.on("error", notify.onError({
-			message: 'Error: <%= error.message %>'
-		}))
-		.pipe(browserSync.stream())
-		.pipe(gulp.dest(PRO_JS));
-	} else {
-		process.env.NODE_ENV = 'production';
-		return browserify({
-			entries: DEV_JSX_APP,
-			extensions: ['.jsx'],
-			debug: true
-		})
-		.transform('babelify', {presets: ['es2015', 'es2017', 'react']})
-		.bundle()
-		.pipe(source(bundle_name))
-		.pipe(buffer())
-		.pipe(gConcat(bundle_name))
-		.pipe(uglify({
-			filename:bundle_name
-		}))
-		.on("error", notify.onError({
-			message: 'Error: <%= error.message %>'
-		}))
-		.pipe(browserSync.stream())
-		.pipe(gulp.dest(PRO_JS))
-		.pipe(gulp.dest(REL_JS));
-	}
+	return browserify({
+		entries: DEV_JSX_APP,
+		extensions: ['.jsx'],
+		debug: false
+	})
+	.transform('babelify', {presets: ['es2015', 'react']})
+	.bundle()
+	.pipe(source(bundle_name))
+	.pipe(buffer())
+	.pipe(gulp.dest(PRO_JS))
+	.pipe(minifyJS({
+		ext:{
+			src: '-uncomp.js',
+			min: '.js'
+		},
+		compress: true
+	}))
+	.pipe(gulp.dest(REL_JS));
 });
- 
+
 
 // API task
 gulp.task('build-api', function() {
 	return gulp.src(DEV_PHP)
 	.pipe(gulp.dest(PRO_PHP));
 });
-
-gulp.task('build-api-release', function() {
-	return gulp.src(DEV_PHP, {
-		read: false
-	})
-	.pipe(phpMinify())
-	.pipe(gulp.dest(REL_PHP));
-});
-
-// API task
 gulp.task('build-dirlister', function() {
 	return gulp.src(DEV_DL)
 	.pipe(gulp.dest(PRO_DL));
 });
 
-gulp.task('build-dirlister-release', function() {
-	return gulp.src(DEV_DL, {
-		read: false
-	})
-	.pipe(phpMinify())
+
+gulp.task('compressPhp', async function() {
+	gulp.src(DEV_PHP)
+	.pipe(gulp.dest(REL_PHP));
+	return gulp.src(DEV_DL)
 	.pipe(gulp.dest(REL_DL));
-});
-
-// Templates Render Function
-gulp.task('build-templates', function() {
-	// if (usePHP) {
-	// 	var jade = require('gulp-jade-php');
-	// } else {
-	// 	var jade = require('gulp-jade');
-	// }
-
-	// return gulp.src(DEV_TEMPLATES_JADE)
-	// 	.pipe(jade({
-	// 		pretty: true
-	// 	}))
-	// 	.pipe(gulp.dest(MAIN_DIR));
+	
+	// The Cedx PHP Minify is currently not working
+	/*
+	gulp.src(DEV_PHP, {read: false})
+	.pipe(cedx.phpMinify())
+	.pipe(gulp.dest(REL_PHP));
+	return gulp.src(DEV_DL, {read: false})
+	.pipe(cedx.phpMinify())
+	.pipe(gulp.dest(REL_DL));
+	*/
 });
 
 
-gulp.task('build-release', function() {
-	gulp.src([MAIN_DIR + '/extensions/', '!./' + MAIN_DIR + '/extensions/**'])
-	.pipe(gulp.dest(RELEASE_DIR));
-
+gulp.task('build-release', async function(done) {
 	gulp.src([MAIN_DIR + '/term/'])
 	.pipe(gulp.dest(RELEASE_DIR));
 	gulp.src([MAIN_DIR + '/term/*.*'])
@@ -266,43 +162,29 @@ gulp.task('build-release', function() {
 	.pipe(gulp.dest(RELEASE_DIR));
 	gulp.src([MAIN_DIR + '/update/*.*'])
 	.pipe(gulp.dest(RELEASE_DIR + '/update/'));
-
-	return gulp.src([MAIN_DIR + '/*.*', '!./' + MAIN_DIR + '/config.json', '!./' + MAIN_DIR + '/**/*.html'])
+	
+	gulp.src([MAIN_DIR + '/*.*', '!./' + MAIN_DIR + '/config.json', '!./' + MAIN_DIR + '/**/*.html'])
 	.pipe(gulp.dest(RELEASE_DIR));
+	
+	done();
 });
 
 
 // Templates Watch
 gulp.task('watch', function() {
-	if (usePHP) {
-		browserSync.init({
-			proxy: URL
-		});
-	} else {
-		browserSync.init({
-			server: "./" + MAIN_DIR
-		});
-	}
 
-	gulp.watch(DEV_PHP, ['build-api']);
-	gulp.watch(DEV_JADE, ['build-templates']);
-	gulp.watch(DEV_JS, ['build-js']);
-	gulp.watch(DEV_JSX, ['build-react']);
-	gulp.watch(DEV_SASS, ['build-sass']);
+	browserSync.init({
+		server: "./" + MAIN_DIR
+	});
+
+	gulp.watch(DEV_PHP, gulp.series('build-api'));
+	gulp.watch(DEV_JSX, gulp.series('build-react'));
+	gulp.watch(DEV_SASS, gulp.series('build-sass'));
 	gulp.watch(WATCH_FILES, browserSync.reload);
 });
 
 
-// Templates Watch
-gulp.task('setForPHP', function() {
-	usePHP = true;
-});
-
-
 // Tasks
-gulp.task('build', ['build-sass', 'build-js', 'build-react', 'build-images', 'build-api', 'build-dirlister', 'build-templates']);
-gulp.task('deploy', ['deploy-sass', 'build-js', 'build-react', 'build-images', 'build-api-release', 'build-dirlister-release', 'build-release']);
-gulp.task('release', ['set-prod-node-env', 'deploy']);
-gulp.task('php', ['setForPHP', 'build', 'watch']);
-gulp.task('dev', ['set-dev-node-env', 'build', 'watch']);
-gulp.task('default', ['set-prod-node-env', 'build', 'watch']);
+gulp.task('build', gulp.series(gulp.parallel('build-sass', 'build-react', 'build-api', 'build-dirlister')));
+gulp.task('release', gulp.series(gulp.parallel('set_to_prod', 'deploy-sass', 'build-react', 'compressPhp', 'build-release')));
+gulp.task('default', gulp.series(gulp.parallel('set_to_dev', 'build', 'watch')));

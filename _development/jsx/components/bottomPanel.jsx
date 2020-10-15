@@ -1,6 +1,6 @@
 import React from 'react';
-import $ from 'jquery';
-import 'jquery-ui';
+// import $ from 'jquery';
+// import 'jquery-ui';
 import store from '../store';
 
 import WebConsole from './console';

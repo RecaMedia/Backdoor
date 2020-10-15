@@ -1,6 +1,6 @@
 {
     "backdoorDir": "_preview",
-    "backdoorDomain": "http:\/\/backdoor2.local",
+    "backdoorDomain": "http:\/\/dev.backdoor.local",
     "changeRoot": "_demo-root",
     "defaultTheme": "monokai",
     "domainIsBackdoorApp": "true",
