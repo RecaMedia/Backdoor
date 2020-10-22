@@ -12,7 +12,12 @@ To begin installation, goto the URL that points to the Backdoor directory. For e
 
 ### Requirements
 
-Make sure you have the following PHP modules installed: __*Sqlite3, Mcrypt*__. The www-data user would need writing permission for this application to work properly. Also, __*.htacces*__ files will need to be allowed to redirect within the /bkdr directory and subdirectories. You can use the following sample for your vhost to allow .htaccess redirects:
+Make sure you have the following PHP modules installed: __*Sqlite3, Mcrypt*__. The www-data user would need writing permission for this application to work properly. Also, __*.htacces*__ files will need to be allowed to redirect within the /bkdr directory and subdirectories. **PLEASE NOTE** this was originally intended to work off of Apache. However, if you're using **Nginx**, you will have to modify the server.conf file to reflect the configurations found in the _.htaccess_ file listed below, by using a [converter](https://winginx.com/en/htaccess) tool.
+
+* `/bkdr/api/.htaccess`
+
+Continuing on for Apache users, you can use the following sample for your site's address within the vhost to allow .htaccess redirects:
+
 ```
 <Directory /var/www/>
 	Options Indexes FollowSymLinks
@@ -23,7 +28,7 @@ Make sure you have the following PHP modules installed: __*Sqlite3, Mcrypt*__. T
 
 ### Reporting
 
-Please visit the [Issues](https://github.com/RecaMedia/Backdoor-Release/issues) tab if you've run into any problems with installation. If you're unable to find answers regarding your issue, feel free to open a new issue and I'll do my best to help resolve the problem. This project is being maintained, however, there is only one contributor so responses may not be as rapid.
+Please visit the [Issues](https://github.com/RecaMedia/Backdoor-Release/issues) tab if you've run into any problems with installation. If you're unable to find answers regarding your issue, feel free to open a new issue and I'll do my best to help resolve the problem. This project is being maintained, however, there is only one contributor at the moment so responses may not be as rapid.
 
 ### License
 
