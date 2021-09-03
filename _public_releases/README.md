@@ -6,25 +6,19 @@ Backdoor is a standalone browser based code editor that operates on a LASP (Linu
 
 ----
 
-### Installation
-
-To begin installation, goto the URL that points to the Backdoor directory. For example, http://localhost/bkdr/ or http://bkdr.mydomain.com/. The installation wizard should prepopulate some of the inputs for you. Make sure the folder name of the Backdoor application is correct as this may effect some functionality. The default folder name is `bkdr`, unless you change it.
-
 ### Requirements
 
-Make sure you have the following PHP modules installed: __*Sqlite3, Mcrypt*__. The www-data user would need writing permission for this application to work properly. Also, __*.htacces*__ files will need to be allowed to redirect within the /bkdr directory and subdirectories. **PLEASE NOTE** this was originally intended to work off of Apache. However, if you're using **Nginx**, you will have to modify the server.conf file to reflect the configurations found in the _.htaccess_ file listed below, by using a [converter](https://winginx.com/en/htaccess) tool.
+Make sure you have the following PHP modules installed and functioning: `Sqlite3`, `Mcrypt`. The `.htacces*` files will need to be allowed to redirect within the `bkdr` directory and subdirectories, check your vhost configuration to allow this. **PLEASE NOTE** this was originally intended to work off of Apache. However, if you're using **Nginx**, you will have to modify the server.conf file to reflect the configurations found in `/bkdr/api/.htaccess`, by using a [converter](https://winginx.com/en/htaccess) tool.
 
-* `/bkdr/api/.htaccess`
+Once you've uploaded the `bkdr` directory to your server, you'll need to change ownership and permissions so the application can function properly. Use the following commands to do this:
 
-Continuing on for Apache users, you can use the following sample for your site's address within the vhost to allow .htaccess redirects:
+`chown -R www-data:www-data /path/to/bkdr`
 
-```
-<Directory /var/www/>
-	Options Indexes FollowSymLinks
-	AllowOverride None
-	Require all granted
-</Directory>
-```
+`chmod 775 -R /path/to/bkdr`
+
+### Installation
+
+To begin installation, visit the URL which will point you to the `bkdr` directory (__http://localhost/bkdr/__ or __http://bkdr.mydomain.com/__). The installation wizard should prepopulate some of the inputs for you. Make sure the folder name of the Backdoor application is correct as this may effect some functionality. The default folder name is `bkdr`, unless you change it. Add the super user email address as required. Only change the root path *IF* the root directory in which *bkdr* live in, is not the directory you wish Backdoor to access. If this is the case, you'll need to start your relative path from the parent directory of `bkdr`. Once you're done, submit the form and you'll be notified if installation was successful. If you have errors, please look at your server logs for details.
 
 ### Reporting
 
